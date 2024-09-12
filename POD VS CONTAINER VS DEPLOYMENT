@@ -1,0 +1,10 @@
+ - **Pod**: A Pod is the smallest deployable unit in Kubernetes, representing one or more containers that share resources like networking and storage.
+            Containers within a Pod are scheduled and run together on the same worker node. 
+            Pods are ephemeral by nature and can be replaced and rescheduled by Kubernetes controllers.
+
+- **Container**: A container is a standard unit of software that packages up code and its dependencies so the application can run quickly and reliably across different computing environments. 
+                  In the context of Kubernetes, containers run within Pods and represent the individual application components.
+
+- **Deployment**: A Deployment is a Kubernetes resource used to manage the lifecycle of Pods and ReplicaSets.
+                  Deployments enable the declarative updates for Pods and ReplicaSets, providing features like rolling updates, rollbacks, and scaling. 
+                  Deployments abstract the underlying complexity of managing Pods and ReplicaSets, making it easier to define, manage, and scale applications in Kubernetes.  
