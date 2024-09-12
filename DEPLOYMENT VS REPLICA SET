@@ -1,0 +1,8 @@
+ - **Deployment**: A Deployment in Kubernetes provides declarative updates for Pods and ReplicaSets.
+                  It allows you to define the desired state of the application, handles creating and updating ReplicaSets to meet that state, enables rolling updates, and supports rollback capabilities. 
+                  Deployments are primarily focused on managing application lifecycle, scalability, and availability.
+
+- **ReplicaSet**: A ReplicaSet ensures that a specified number of replica Pods are running at any given time. 
+                  It is used to maintain a stable set of replica Pods, scaling them up or down as needed. 
+                  ReplicaSets are lower-level controllers compared to Deployments and are often created by Deployments to manage the replication of Pods. 
+                  While ReplicaSets ensure a desired number of Pods are running, Deployments manage the overall application state and updates.  
