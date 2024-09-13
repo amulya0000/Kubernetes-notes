@@ -1,0 +1,17 @@
+ Kubernetes services are an abstraction that defines a logical set of Pods and a policy by which to access them. 
+      Services enable a loose coupling between dependent components in a Kubernetes environment. 
+      There are several types of Kubernetes services, each serving a different purpose:
+
+1. ClusterIP: This is the default type of service. ClusterIP exposes the Service on a cluster-internal IP.
+              It makes the Service only reachable from within the cluster.
+
+2. NodePort: This type of service exposes the Service on each Node’s IP at a static port. 
+             NodePort makes the Service accessible from outside the cluster using the <NodeIP>:<NodePort> address.
+
+3. LoadBalancer: This type of service exposes the Service externally using a cloud provider’s load balancer.
+                 LoadBalancer automatically creates an external load balancer in the cloud, which then routes traffic to the corresponding Service.
+
+4. ExternalName: This type of service maps the Service to the contents of the externalName field.
+                 It allows accessing external services by returning a value for a specified DNS name.
+
+These service types provide flexibility and options for exposing applications running on Kubernetes to other applications or users.  
