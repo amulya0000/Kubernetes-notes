@@ -15,3 +15,7 @@
                  It allows accessing external services by returning a value for a specified DNS name.
 
 These service types provide flexibility and options for exposing applications running on Kubernetes to other applications or users.  
+
+
+  In Kubernetes, a Service provides a stable and consistent way for pods to communicate with each other,
+  allowing users to access pods without needing to know their individual IP addresses.  
