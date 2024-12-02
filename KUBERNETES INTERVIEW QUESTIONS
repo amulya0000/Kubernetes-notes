@@ -39,4 +39,150 @@
         kubelet communicates with the Kubernetes API server to get information about the containers that should be running on the node,and then starts and stops the containers as needed to maintain the desired state.
         It also monitors the containers to ensure that they are running correctly,and restarts them if necessary 
 10.  Day to Day activities on Kubernetes
-        
+
+
+I'll compile a comprehensive list of Kubernetes deployment interview questions and answers based on the transcript:
+
+# Kubernetes Deployment Interview Questions and Answers
+
+## Fundamental Concepts
+
+### Q1: What is the difference between a Container, Pod, and Deployment?
+
+**Answer:**
+- **Container:** 
+  - Basic unit of application packaging
+  - Runs a single application
+  - Defined with runtime parameters in Docker
+
+- **Pod:**
+  - Kubernetes abstraction that runs one or more containers
+  - Provides a shared networking and storage context
+  - Can run multiple containers that need to work closely together
+  - Basic unit of deployment in Kubernetes
+
+- **Deployment:**
+  - Higher-level Kubernetes resource for managing application lifecycle
+  - Provides auto-healing and auto-scaling capabilities
+  - Creates and manages replica sets
+  - Ensures desired state of application is maintained
+
+### Q2: Why shouldn't you create Pods directly in Kubernetes?
+
+**Answer:**
+- Pods lack advanced management features
+- No built-in auto-healing capabilities
+- Cannot automatically scale or replace failed pods
+- Deployments provide:
+  - Auto-healing
+  - Auto-scaling
+  - Zero-downtime deployments
+  - Easy scaling of application replicas
+
+### Q3: What is a Replica Set in Kubernetes?
+
+**Answer:**
+- A Kubernetes controller that ensures a specified number of pod replicas are running
+- Responsible for:
+  - Creating and maintaining the desired number of pods
+  - Auto-healing by replacing failed or deleted pods
+  - Scaling applications up or down
+- Automatically created and managed by Deployments
+- Ensures the actual state matches the desired state in the deployment manifest
+
+### Q4: How does Kubernetes implement Auto-healing?
+
+**Answer:**
+- Through Replica Sets in Deployments
+- Process:
+  1. Deployment specifies desired number of replicas
+  2. Replica Set monitors pod status
+  3. If a pod fails or is deleted, Replica Set automatically creates a new pod
+  4. Maintains the exact number of specified replicas
+- Ensures continuous application availability
+- Works without manual intervention
+
+### Q5: What is a Zero-Downtime Deployment?
+
+**Answer:**
+- Ability to update or scale applications without interrupting service
+- Achieved through:
+  - Parallel pod creation and deletion
+  - Maintaining continuous application availability
+  - Seamless scaling of replicas
+- Ensures:
+  - No disruption to live traffic
+  - Smooth application updates
+  - Consistent user experience
+
+### Q6: How do you scale an application in Kubernetes?
+
+**Answer:**
+- Modify the `replicas` field in the Deployment manifest
+- Example:
+  ```yaml
+  spec:
+    replicas: 3  # Change this number to scale
+  ```
+- Replica Set automatically:
+  - Creates new pods when scaling up
+  - Removes pods when scaling down
+- Can be done manually or through automated scaling mechanisms
+
+### Q7: What are Kubernetes Controllers?
+
+**Answer:**
+- Software components that maintain desired system state
+- Ensure actual cluster state matches desired configuration
+- Types include:
+  - Deployment Controller
+  - Replica Set Controller
+  - Job Controller
+- Continuously monitor and reconcile differences between desired and actual states
+
+### Q8: How to list all resources in a Kubernetes namespace?
+
+**Answer:**
+- Use command: `kubectl get all`
+- For all namespaces: `kubectl get all -A`
+- Shows:
+  - Deployments
+  - Pods
+  - Services
+  - Other Kubernetes resources
+
+### Q9: What is the recommended way to define Kubernetes resources?
+
+**Answer:**
+- Use YAML manifest files
+- Declarative approach to defining resources
+- Store configuration in version control
+- Easy to reproduce and share configurations
+- Allows for easier management and tracking of changes
+
+### Q10: How does a Deployment differ from a Replica Set?
+
+**Answer:**
+- **Deployment:**
+  - Higher-level abstraction
+  - Manages overall application lifecycle
+  - Provides update strategies
+  - Creates and manages Replica Sets
+
+- **Replica Set:**
+  - Lower-level controller
+  - Ensures specific number of pod replicas
+  - Handles pod creation and deletion
+  - Implements auto-healing
+  - Created and managed by Deployments
+
+## Pro Tips for Interview Preparation
+
+1. Understand the conceptual relationships between containers, pods, and deployments
+2. Practice creating and managing deployments
+3. Familiarize yourself with `kubectl` commands
+4. Study Kubernetes documentation
+5. Experiment with minikube or other local Kubernetes clusters
+6. Be prepared to explain real-world scenarios and use cases
+
+Would you like me to elaborate on any of these questions or provide additional interview preparation guidance?
