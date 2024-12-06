@@ -1,0 +1,95 @@
+### Kubernetes RBAC Interview Questions and Answers
+
+#### Basic Conceptual Questions
+
+1. **Q: What is Kubernetes RBAC?**
+   **A:** Kubernetes RBAC (Role-Based Access Control) is a security mechanism that manages access to Kubernetes resources based on the roles of individual users or service accounts. It allows you to define granular permissions, controlling what actions users or applications can perform within a Kubernetes cluster.
+
+2. **Q: How does Kubernetes handle user management?**
+   **A:** Kubernetes does not manage user authentication internally. Instead, it offloads user management to external identity providers like:
+   - AWS IAM
+   - LDAP
+   - OCTA
+   - Single Sign-On (SSO) systems
+   - Identity brokers like Keycloak
+
+3. **Q: What are the main components of Kubernetes RBAC?**
+   **A:** The three primary components of Kubernetes RBAC are:
+   - Service Accounts / Users
+   - Roles (or Cluster Roles)
+   - Role Bindings (or Cluster Role Bindings)
+
+#### Technical Implementation Questions
+
+4. **Q: What is the difference between a Role and a Cluster Role?**
+   **A:** 
+   - Role: Defines permissions within a specific namespace
+   - Cluster Role: Defines permissions across the entire cluster
+   Both are used to specify what actions can be performed on which resources.
+
+5. **Q: How do you create and manage service accounts?**
+   **A:** Service accounts can be created using YAML files, similar to pod definitions. By default, Kubernetes creates a default service account for each namespace. You can:
+   - Create custom service accounts
+   - Define specific permissions
+   - Attach them to pods or applications
+   - Bind them to roles using role bindings
+
+6. **Q: What is the purpose of Role Binding?**
+   **A:** Role Binding connects a Role or Cluster Role to a user or service account. It essentially says, "This role with these specific permissions is assigned to this user or service account." This allows you to grant specific access rights to users or applications.
+
+#### Security and Best Practices
+
+7. **Q: How would you implement the principle of least privilege in Kubernetes?**
+   **A:** To implement least privilege:
+   - Create specific, limited roles
+   - Avoid using cluster-admin roles
+   - Create separate roles for different teams (dev, QA, ops)
+   - Regularly audit and review permissions
+   - Use namespaces to isolate and limit access
+
+8. **Q: What are some identity providers you can use with Kubernetes?**
+   **A:** Common identity providers include:
+   - AWS IAM
+   - Azure Active Directory
+   - Google Cloud IAM
+   - LDAP
+   - OCTA
+   - Keycloak
+   - GitHub (via integration)
+
+#### Scenario-Based Questions
+
+9. **Q: In a multi-team environment, how would you set up RBAC for different teams?**
+   **A:** Example approach:
+   - Development Team: Limited access to specific namespaces, can create and modify deployments
+   - QA Team: Read-only access to resources, can view logs and metrics
+   - DevOps Team: Full cluster administration rights
+   - Create separate roles and role bindings for each team
+   - Use namespace restrictions to control access
+
+10. **Q: How do you restrict a service account's permissions?**
+    **A:** 
+    - Create a specific role with minimal required permissions
+    - Use role binding to attach the role to the service account
+    - Explicitly define allowed actions (create, read, update, delete)
+    - Limit the role to specific resources or namespaces
+
+### Advanced Conceptual Questions
+
+11. **Q: Why is RBAC important in Kubernetes?**
+    **A:** RBAC is crucial because:
+    - It provides security by controlling access to cluster resources
+    - Prevents unauthorized modifications to critical infrastructure
+    - Allows granular permission management
+    - Supports the principle of least privilege
+    - Enables separation of concerns in multi-team environments
+
+### Practical Tips for Interview Preparation
+
+- Understand the core concepts thoroughly
+- Practice creating YAML files for service accounts, roles, and role bindings
+- Familiarize yourself with different identity providers
+- Be prepared to discuss real-world scenarios
+- Stay updated on Kubernetes security best practices
+
+Would you like me to elaborate on any of these questions or provide more detailed explanations for any specific area?
